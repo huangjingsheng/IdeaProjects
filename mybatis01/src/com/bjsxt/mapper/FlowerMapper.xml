@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace-->
+<mapper namespace="a.b">
+    <!--id:方法名
+        resultType是返回值类型
+        如果返回值是list,则resultType写list的泛型，这个泛型必须有无参的构造方法-->
+    <select id = "selAll" resultType="com.bjsxt.pojo.Flower">
+        select * from flower
+    </select>
+
+</mapper>
