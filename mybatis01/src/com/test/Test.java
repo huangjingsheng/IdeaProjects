@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 public class Test {
     public static void main(String[] args){
@@ -28,6 +29,12 @@ public class Test {
         for(Flower flower : list){
             System.out.println(flower.toString());
         }
+        int count = session.selectOne("a.b.selOne");
+        System.out.println(count);
+
+        Map<Object,Object> map = session.selectMap("a.b.selMap","name");
+        System.out.println(map);
+
         session.close();
     }
 }
