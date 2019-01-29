@@ -2,3 +2,5 @@
 *.jar
 */out
 */.idea
+/.idea
+*.bak
