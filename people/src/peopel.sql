@@ -1,5 +1,5 @@
 use ssm;
-create table peopel(
+create table people(
 id int(10) primary key auto_increment comment "编号",
 name varchar(20) comment "姓名",
 age int(3) comment "年龄",
