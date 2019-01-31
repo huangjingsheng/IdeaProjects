@@ -6,6 +6,7 @@
     <settings>
         <setting name="logImpl" value="LOG4J"/>
     </settings>
+
     <environments default="default">
         <environment id="default">
             <transactionManager type="JDBC"></transactionManager>
@@ -18,7 +19,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="F:com\bjsxt\mapper\PeopleMapper.xml"/>
+        <mapper resource="com\bjsxt\mapper\PeopleMapper.xml"/>
     </mappers>
 
 </configuration>

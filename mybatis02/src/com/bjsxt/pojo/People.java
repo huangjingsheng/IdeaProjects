@@ -17,6 +17,19 @@ public class People {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"id\":")
+                .append(id);
+        sb.append(",\"name\":\"")
+                .append(name).append('\"');
+        sb.append(",\"age\":")
+                .append(age);
+        sb.append('}');
+        return sb.toString();
+    }
+
     public String getName() {
         return name;
     }
@@ -32,4 +45,5 @@ public class People {
     public void setAge(int age) {
         this.age = age;
     }
+
 }
