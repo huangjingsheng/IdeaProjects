@@ -60,6 +60,12 @@ public class TestMybatis {
         map1.put("pageSize",pageSize);
         List<People> list = session.selectList("com.bjsxt.pojo.People.selPage",map1);
         System.out.println(list);
+
+        People p5 = new People();
+        p5.setName("新增名称2");
+        p5.setAge(20);
+        session.insert("com.bjsxt.pojo.People.ins",p5);
+        session.commit();
         session.close();
 
 
