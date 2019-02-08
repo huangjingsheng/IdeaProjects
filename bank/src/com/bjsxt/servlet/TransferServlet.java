@@ -43,7 +43,7 @@ public class TransferServlet extends HttpServlet {
         int code = service.transfer(accIn,accOut);
 
         if(code==AccountService.SUCCESS){
-            resp.sendRedirect("/bank/log.jsp");
+            resp.sendRedirect("/bank/show");
         }else {
             HttpSession session = req.getSession();
             session.setAttribute("code",code);
