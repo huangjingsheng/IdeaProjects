@@ -21,19 +21,21 @@ public class test {
         SqlSession session = factory.openSession();
 
         LogMapper mapper = session.getMapper(LogMapper.class);
-        /*List<Log> logs = mapper.selAll();
-
-        for(Log log :logs){
-            System.out.println(log);
-        }*/
-
-        List<Log> logs = mapper.selByAccoutAccin("1", "2");
+        //List<Log> logs = mapper.selAll();
+        /**
+         * 参数，mapper通过索引找到值
+         */
+        //List<Log> logs = mapper.selByAccoutAccin("1", "2");
+        /**
+         * 动态SQL
+         * accout和accin 传 null 或""都可以
+         */
+        String accout = "1";
+        String accin = "2";
+        List<Log> logs = mapper.sel(accout,accin);
 
         for(Log log : logs){
             System.out.println(log);
         }
-
-
-
     }
 }

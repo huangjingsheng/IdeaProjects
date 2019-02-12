@@ -22,4 +22,8 @@
             and accin=#{accin}
         </if>
     </select>
+
+    <insert id="ins" parameterType="Log">
+        insert into log values (default ,#{accout},#{accin},#{money},#{date})
+    </insert>
 </mapper>
