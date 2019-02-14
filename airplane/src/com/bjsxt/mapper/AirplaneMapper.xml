@@ -1,0 +1,44 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.mapper.AirplaneMapper">
+
+    <resultMap id="airplaneMap" type="airplane">
+        <id column="id" property="id"/>
+        <result column="airno" property="airno"/>
+        <result column="time" property="time"/>
+        <result column="price" property="price"/>
+        <result column="takeid" property="takeid"/>
+        <result column="landid" property="landid"/>
+
+        <collection property="takePort" javaType="airport">
+            <id column="takeid" property="id"/>
+            <result column="takename" property="portName"/>
+            <result column="takecity" property="cityName"/>
+        </collection>
+
+        <collection property="landPort" javaType="airport">
+            <id column="landid" property="id"/>
+            <result column="landname" property="portName"/>
+            <result column="landcity" property="cityName"/>
+        </collection>
+    </resultMap>
+
+    <select id="sellByTakeIdLandId" resultMap="airplaneMap">
+        SELECT
+        a.id id,a.airno airno,a.time time,a.price price,a.takeid,a.landid,
+        b.portname takename,b.cityname takecity,
+        c.portname landname,c.cityname landcity
+        from
+        airplane a left join airport b on a.takeid = b.id left join airport c on a.landid = c.id
+              <where>
+                  <if test="takeid>0">
+                      and takeid=#{takeid}
+                  </if>
+                  <if test="landid>0">
+                      and landid=#{landid}
+                  </if>
+              </where>
+    </select>
+
+</mapper>
