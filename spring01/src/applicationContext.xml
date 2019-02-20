@@ -6,4 +6,27 @@
     <!-- id表示获取到对象标识
     	 class 创建哪个类的对象
      -->
+
+    <!--<bean id="peo" class="com.bjsxt.pojo.People">
+        <constructor-arg index="0" value="张三"></constructor-arg>
+        <constructor-arg index="1" value="123"></constructor-arg>
+    </bean>-->
+
+    <bean id="peo" class="com.bjsxt.pojo.People">
+        <constructor-arg name="id" value="123"></constructor-arg>
+        <constructor-arg name="name" value="张三"></constructor-arg>
+    </bean>
+
+    <!--实例工厂-->
+    <bean id="factory" class="com.bjsxt.pojo.PeopleFactory"></bean>
+    <bean id="peo1" factory-bean="factory" factory-method="newInstance"></bean>
+    <!--静态工厂-->
+    <bean id="peo2" class="com.bjsxt.pojo.PeopleStaticFactory" factory-method="newInstance"></bean>
+
+    <!--传参-->
+    <bean id="stu" class="com.bjsxt.pojo.Student">
+        <property name="id" value="1"></property>
+        <property name="name" value="学生"></property>
+    </bean>
+
 </beans>
