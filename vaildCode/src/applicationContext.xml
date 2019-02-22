@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- id表示获取到对象标识
+    	 class 创建哪个类的对象
+     -->
+    <bean id="dataStore" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/ssm"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="123456"></property>
+     </bean>
+
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataStore"></property>
+    </bean>
+    
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.bjsxt.mapper"></property>
+    </bean>
+
+    <bean id="uerService" class="com.bjsxt.service.impl.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"></property>
+    </bean>
+</beans>
