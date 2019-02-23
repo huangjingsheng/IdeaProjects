@@ -10,10 +10,41 @@
     <bean id="mybefore" class="com.bjsxt.test.MyBeforeAdivce"></bean>
     <bean id="myafter" class="com.bjsxt.test.MyAfterAdvice"></bean>
     <bean id="demo" class="com.bjsxt.test.Demo"></bean>
+    <bean id="myarround" class="com.bjsxt.test.MyArround"></bean>
+    <bean id="myAdvice" class="com.bjsxt.test.MyAdvice"></bean>
 
     <aop:config>
-        <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.test.Demo.print1())"></aop:pointcut>
+        <!--前置通知和后置通知-->
+        <!--<aop:pointcut id="mypoint" expression="execution(* com.bjsxt.test.Demo.print1())"></aop:pointcut>
         <aop:advisor advice-ref="mybefore" pointcut-ref="mypoint"></aop:advisor>
-        <aop:advisor advice-ref="myafter" pointcut-ref="mypoint"></aop:advisor>
+        <aop:advisor advice-ref="myafter" pointcut-ref="mypoint"></aop:advisor>-->
+
+        <!--环绕通知-->
+        <!--<aop:pointcut id="mypoint1" expression="execution(* com.bjsxt.test.Demo.print())"></aop:pointcut>
+        <aop:advisor advice-ref="myarround" pointcut-ref="mypoint1"></aop:advisor>-->
+
+        <!--异常通知-->
+        <!--<aop:aspect ref="myexcetion">
+            <aop:pointcut id="mypoint2" expression="execution(* com.bjsxt.test.*.*())"></aop:pointcut>
+            <aop:after-throwing method="error" pointcut-ref="mypoint2" throwing="e"></aop:after-throwing>
+        </aop:aspect>-->
+
+        <!--用AspectJ方式实现-->
+        <aop:aspect ref="myAdvice">
+
+            <aop:pointcut id="p" expression="execution(* com.bjsxt.test.Demo.print(Sting,int)) and args(name,id)"></aop:pointcut>
+
+            <!--<aop:pointcut id="p1" expression="execution(* com.bjsxt.test.Demo.print(String)) and args(name)"></aop:pointcut>-->
+            <aop:pointcut id="p1" expression="execution(* com.bjsxt.test.Demo.print(Sting)) and args(name)"></aop:pointcut>
+
+            <!--前置-->
+            <!--<aop:before method="myBefore" pointcut-ref="p" arg-names="name,id"></aop:before>
+            <aop:before method="myBefore1" pointcut-ref="p1" arg-names="name"></aop:before>-->
+            <
+        </aop:aspect>
     </aop:config>
+
+    <bean id="myexcetion" class="com.bjsxt.test.MyExcetion"></bean>
+
+
 </beans>
