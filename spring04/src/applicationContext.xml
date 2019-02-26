@@ -46,5 +46,4 @@
 
     <bean id="myexcetion" class="com.bjsxt.test.MyExcetion"></bean>
 
-
 </beans>
